@@ -1558,10 +1558,12 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
             ))}
           </div>
 
-          <div className="reveal text-center mt-10 space-y-2">
-            <p className="text-[#8888a8] text-sm">Alle Preise zzgl. MwSt. · Monatlich kündbar · Kein Mindestvertrag</p>
-            <p className="text-[#6b6b8a] text-xs">
-              Zur Einordnung: <span className="text-[#a0a0b8]">890 € / Monat = 30 € pro Tag</span> — weniger als ein Azubi-Arbeitstag kostet. Und einer der nicht schläft.
+          <div className="reveal text-center mt-12 space-y-4">
+            <p className="text-[#555568] text-xs">Alle Preise zzgl. MwSt. · Monatlich kündbar · Kein Mindestvertrag</p>
+            <p className="text-white font-bold text-lg md:text-2xl leading-snug">
+              890 € / Monat = 30 € pro Tag —<br className="hidden md:block" />{" "}
+              weniger als ein Azubi-Arbeitstag kostet.{" "}
+              <span className="gradient-text">Und einer der nicht schläft.</span>
             </p>
           </div>
         </div>
