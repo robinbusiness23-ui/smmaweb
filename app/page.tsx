@@ -313,6 +313,15 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
   const [pwInput, setPwInput]           = useState("");
   const [pwError, setPwError]           = useState(false);
   const [reportOpen, setReportOpen]     = useState(false);
+  const [pricingVisible, setPricingVisible] = useState(false);
+  const pricingRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const el = pricingRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => setPricingVisible(e.isIntersecting), { threshold: 0.1 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   const handleFooterSecretClick = () => {
     const next = footerClicks + 1;
@@ -595,6 +604,54 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
           <p className="reveal text-center text-[#8888a8] text-sm mt-8">
             ...und jeden weiteren Handwerksbetrieb in der Region.{" "}
             <a href="#kontakt" className="text-[#4c6ef5] hover:underline transition-colors">Sprecht uns an.</a>
+          </p>
+        </div>
+      </section>
+
+      {/* ─────────────────── FÜR WEN NICHT ─────────────────── */}
+      <div className="section-divider" />
+      <section className="py-14 md:py-20 relative overflow-hidden" style={{ background: "#181820" }}>
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(249,115,22,0.04) 0%, transparent 70%)" }} />
+        <div className="max-w-5xl mx-auto px-6 relative">
+          <div className="mb-10 text-center">
+            <p className="reveal text-[11px] font-bold uppercase tracking-[0.22em] mb-4" style={{ color: "#f97316" }}>Ehrlichkeit first</p>
+            <h2 className="reveal delay-100 text-3xl md:text-5xl font-black text-white leading-tight">
+              Für wen wir <span style={{ color: "#f97316" }}>nicht</span> arbeiten.
+            </h2>
+            <p className="reveal delay-200 text-[#a0a0b8] mt-4 max-w-xl mx-auto text-base leading-relaxed">
+              Wir sagen euch lieber vorher ob wir zusammenpassen — als hinterher beide Zeit verschwenden.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-4">
+            {[
+              {
+                icon: "🏢",
+                title: "Große Konzerne",
+                desc: "Wer ein Inhouse-Marketing-Team hat, braucht uns nicht. Wir sind für Betriebe gebaut, die das nicht haben — und auch nicht wollen.",
+              },
+              {
+                icon: "⚡",
+                title: "Wer schnellen Ruhm will",
+                desc: "10.000 Follower in 30 Tagen — das versprechen andere. Wir bauen echte Sichtbarkeit auf. Das dauert länger, hält aber.",
+              },
+              {
+                icon: "💸",
+                title: "Wer nur günstig sucht",
+                desc: "Für 99 € gibt es automatisch generierte Posts ohne Seele. Wir machen echte Arbeit. Wer das nicht versteht, ist nicht unser Kunde.",
+              },
+            ].map((item, i) => (
+              <div key={i} className="reveal rounded-2xl p-6 flex flex-col gap-3 transition-all duration-300 hover:scale-[1.02]"
+                style={{ background: "rgba(249,115,22,0.05)", border: "1px solid rgba(249,115,22,0.15)", transitionDelay: `${i * 0.1}s` }}>
+                <span className="text-2xl">{item.icon}</span>
+                <h3 className="text-white font-bold text-lg">{item.title}</h3>
+                <p className="text-[#a0a0b8] text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          <p className="reveal text-center text-[#6b6b8a] text-sm mt-8">
+            Ihr findet euch in keinem davon wieder? Dann seid ihr genau richtig.{" "}
+            <a href="#kontakt" className="text-[#4c6ef5] hover:underline transition-colors">Meldet euch.</a>
           </p>
         </div>
       </section>
@@ -1056,6 +1113,100 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
         </div>
       </section>
 
+      {/* ─────────────────── BEFORE / AFTER ─────────────────── */}
+      <div className="section-divider" />
+      <section className="py-14 md:py-24 relative overflow-hidden" style={{ background: "#181820" }}>
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(59,91,219,0.05) 0%, transparent 65%)" }} />
+        <div className="max-w-6xl mx-auto px-6 relative">
+          <div className="text-center mb-12">
+            <p className="reveal text-[#4c6ef5] text-xs font-bold uppercase tracking-[0.2em] mb-4">Der Unterschied</p>
+            <h2 className="reveal delay-100 text-3xl md:text-5xl font-black text-white leading-tight">
+              Vorher. <span className="gradient-text">Nachher.</span>
+            </h2>
+            <p className="reveal delay-200 text-[#a0a0b8] mt-4 max-w-lg mx-auto text-base">
+              Kein Photoshop, keine Tricks — nur der Unterschied den eine klare Strategie macht.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-start">
+            {/* BEFORE */}
+            <div className="reveal-left">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full" style={{ background: "rgba(239,68,68,0.12)", color: "#f87171", border: "1px solid rgba(239,68,68,0.2)" }}>Vorher</span>
+                <span className="text-[#6b6b8a] text-xs">Typisches Handwerksprofil</span>
+              </div>
+              <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.07)", background: "#111118" }}>
+                {/* Fake profile header */}
+                <div className="flex items-center gap-3 p-4 border-b" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+                  <div className="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-xs text-gray-400 font-bold">MB</div>
+                  <div>
+                    <div className="text-white text-sm font-semibold">musterbetrieb_freiburg</div>
+                    <div className="text-[#6b6b8a] text-xs">83 Beiträge · 241 Follower</div>
+                  </div>
+                </div>
+                {/* Chaotic feed grid */}
+                <div className="grid grid-cols-3 gap-px p-px">
+                  {[
+                    { bg: "#4a3f30", label: "📱 Handyfoto", sub: "Werkzeug auf Tisch" },
+                    { bg: "#2d3a2d", label: "🌿 Urlaub?", sub: "Grünes Foto" },
+                    { bg: "#3d3030", label: "😊 Flyer", sub: "Weiterempfehlen!" },
+                    { bg: "#2a3545", label: "🔧 Reparatur", sub: "Job fertig 💪" },
+                    { bg: "#4a4030", label: "📋 Text-Post", sub: "Öffnungszeiten" },
+                    { bg: "#303040", label: "🐕 Hund", sub: "Büro-Hund heute" },
+                  ].map((p, i) => (
+                    <div key={i} className="aspect-square flex flex-col items-center justify-center gap-1 text-center p-1"
+                      style={{ background: p.bg }}>
+                      <span className="text-lg leading-none">{p.label.split(" ")[0]}</span>
+                      <span className="text-[9px] text-gray-400 leading-tight">{p.sub}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="p-4">
+                  <p className="text-[#6b6b8a] text-xs leading-relaxed">Ø 4 Likes · 0 Kommentare · Letzter Post vor 3 Wochen</p>
+                </div>
+              </div>
+            </div>
+            {/* AFTER */}
+            <div className="reveal-right">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full" style={{ background: "rgba(59,91,219,0.15)", color: "#a5b4fc", border: "1px solid rgba(59,91,219,0.3)" }}>Nachher</span>
+                <span className="text-[#6b6b8a] text-xs">Mit Funkenflug</span>
+              </div>
+              <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(99,102,241,0.3)", background: "#111118", boxShadow: "0 0 40px rgba(59,91,219,0.1)" }}>
+                {/* Sleek profile header */}
+                <div className="flex items-center gap-3 p-4 border-b" style={{ borderColor: "rgba(99,102,241,0.15)" }}>
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center font-black text-sm text-white"
+                    style={{ background: "linear-gradient(135deg,#3b5bdb,#7c3aed)" }}>MB</div>
+                  <div>
+                    <div className="text-white text-sm font-semibold">musterbetrieb_freiburg</div>
+                    <div style={{ color: "#a5b4fc" }} className="text-xs">312 Beiträge · 2.840 Follower</div>
+                  </div>
+                </div>
+                {/* Cohesive feed grid */}
+                <div className="grid grid-cols-3 gap-px p-px">
+                  {[
+                    { bg: "linear-gradient(135deg,#1a2240,#2d1f3d)", label: "Reel", accent: "#7c3aed" },
+                    { bg: "linear-gradient(135deg,#111827,#1e2a45)", label: "Carousel", accent: "#3b5bdb" },
+                    { bg: "linear-gradient(135deg,#1a2240,#0f1729)", label: "Bild", accent: "#6366f1" },
+                    { bg: "linear-gradient(135deg,#0f1729,#1e2a45)", label: "Story", accent: "#4c6ef5" },
+                    { bg: "linear-gradient(135deg,#1a2240,#2d1f3d)", label: "Reel", accent: "#7c3aed" },
+                    { bg: "linear-gradient(135deg,#111827,#1e2a45)", label: "Bild", accent: "#3b5bdb" },
+                  ].map((p, i) => (
+                    <div key={i} className="aspect-square flex flex-col items-end justify-end p-1.5"
+                      style={{ background: p.bg }}>
+                      <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full" style={{ background: `${p.accent}30`, color: p.accent, border: `1px solid ${p.accent}50` }}>{p.label}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="p-4">
+                  <p style={{ color: "#a5b4fc" }} className="text-xs leading-relaxed">Ø 184 Likes · 11 Kommentare · 3× pro Woche</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ─────────────────── SERVICES ─────────────────── */}
       <div className="section-divider" />
       <section id="leistungen" className="py-14 md:py-24 relative" style={{ background: "#13131a" }}>
@@ -1318,7 +1469,7 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
 
       {/* ─────────────────── PRICING ─────────────────── */}
       <div className="section-divider" />
-      <section id="preise" className="py-14 md:py-24 relative overflow-hidden" style={{ background: "#13131a" }}>
+      <section ref={pricingRef as React.RefObject<HTMLElement>} id="preise" className="py-14 md:py-24 relative overflow-hidden" style={{ background: "#13131a" }}>
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none"
           style={{ background: "radial-gradient(ellipse at 50% 100%, rgba(59,91,219,0.12) 0%, transparent 70%)" }} />
 
@@ -1407,9 +1558,52 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
             ))}
           </div>
 
-          <p className="reveal text-center text-[#8888a8] text-sm mt-10">
-            Alle Preise zzgl. MwSt. · Monatlich kündbar · Kein Mindestvertrag
-          </p>
+          <div className="reveal text-center mt-10 space-y-2">
+            <p className="text-[#8888a8] text-sm">Alle Preise zzgl. MwSt. · Monatlich kündbar · Kein Mindestvertrag</p>
+            <p className="text-[#6b6b8a] text-xs">
+              Zur Einordnung: <span className="text-[#a0a0b8]">890 € / Monat = 30 € pro Tag</span> — weniger als ein Azubi-Arbeitstag kostet. Und einer der nicht schläft.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────────── VERGLEICH ─────────────────── */}
+      <div className="section-divider" />
+      <section className="py-14 md:py-20 relative overflow-hidden" style={{ background: "#1e1e28" }}>
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <p className="reveal text-[#4c6ef5] text-xs font-bold uppercase tracking-[0.2em] mb-4">Der direkte Vergleich</p>
+            <h2 className="reveal delay-100 text-3xl md:text-5xl font-black text-white leading-tight">
+              Funkenflug vs. alle anderen.
+            </h2>
+          </div>
+          <div className="reveal rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.07)" }}>
+            {/* Header row */}
+            <div className="grid grid-cols-4 text-xs font-bold uppercase tracking-wider" style={{ background: "#13131a" }}>
+              <div className="p-4 text-[#6b6b8a]">Kriterium</div>
+              <div className="p-4 text-center" style={{ background: "rgba(59,91,219,0.15)", color: "#a5b4fc", borderLeft: "1px solid rgba(59,91,219,0.3)" }}>Funkenflug</div>
+              <div className="p-4 text-center text-[#6b6b8a]" style={{ borderLeft: "1px solid rgba(255,255,255,0.05)" }}>Klassische Agentur</div>
+              <div className="p-4 text-center text-[#6b6b8a]" style={{ borderLeft: "1px solid rgba(255,255,255,0.05)" }}>Selbst machen</div>
+            </div>
+            {[
+              { label: "Individuelle Content-Strategie", us: "✓", agency: "Teilweise", self: "✗" },
+              { label: "Vor-Ort beim Betrieb", us: "✓", agency: "Selten", self: "✓" },
+              { label: "Community Management", us: "✓", agency: "✓", self: "Zu zeitaufwändig" },
+              { label: "Transparente Preise", us: "✓", agency: "✗", self: "—" },
+              { label: "Monatlich kündbar", us: "✓", agency: "✗", self: "—" },
+              { label: "Freiburg-Expertise", us: "✓", agency: "✗", self: "✓" },
+              { label: "Professionelle Qualität", us: "✓", agency: "✓", self: "✗" },
+              { label: "Kosten pro Monat", us: "ab 890 €", agency: "2.000–8.000 €", self: "\"kostenlos\"" },
+            ].map((row, i) => (
+              <div key={i} className="grid grid-cols-4 text-sm transition-colors hover:bg-white/[0.02]"
+                style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+                <div className="p-4 text-[#a0a0b8]">{row.label}</div>
+                <div className="p-4 text-center font-semibold" style={{ background: "rgba(59,91,219,0.07)", borderLeft: "1px solid rgba(59,91,219,0.2)", color: row.us === "✓" ? "#34d399" : "#a5b4fc" }}>{row.us}</div>
+                <div className="p-4 text-center text-[#6b6b8a]" style={{ borderLeft: "1px solid rgba(255,255,255,0.04)" }}>{row.agency}</div>
+                <div className="p-4 text-center text-[#6b6b8a]" style={{ borderLeft: "1px solid rgba(255,255,255,0.04)" }}>{row.self}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -1487,6 +1681,64 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────────── NICHTS TUN ─────────────────── */}
+      <div className="section-divider" />
+      <section className="py-14 md:py-20 relative overflow-hidden" style={{ background: "#13131a" }}>
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(239,68,68,0.04) 0%, transparent 70%)" }} />
+        <div className="max-w-5xl mx-auto px-6 relative">
+          <div className="text-center mb-12">
+            <p className="reveal text-xs font-bold uppercase tracking-[0.2em] mb-4" style={{ color: "#f87171" }}>Die unbequeme Wahrheit</p>
+            <h2 className="reveal delay-100 text-3xl md:text-5xl font-black text-white leading-tight">
+              Was passiert,<br />wenn ihr <span style={{ color: "#f87171" }}>nichts tut.</span>
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-4">
+            {[
+              {
+                num: "01",
+                title: "Eure Azubis findet jemand anderes",
+                desc: "Jugendliche entscheiden sich für Arbeitgeber, die sie kennen. Wer auf Social Media nicht existiert, kommt bei der Jobsuche gar nicht erst in die engere Wahl. Der Fachkräftemangel ist kein Zufall.",
+                accent: "#f87171",
+              },
+              {
+                num: "02",
+                title: "Euer Mitbewerber wird sichtbarer",
+                desc: "Irgendwo in der Region macht gerade ein anderer Betrieb genau das, was ihr noch überlegt. Jede Woche ohne Präsenz ist eine Woche, in der er einen Vorsprung aufbaut.",
+                accent: "#fb923c",
+              },
+              {
+                num: "03",
+                title: "Neukunden finden euch nicht",
+                desc: "Über 70 % der Menschen recherchieren online, bevor sie einen Handwerker anrufen. Wer dort nicht auftaucht, existiert für diese Menschen schlicht nicht.",
+                accent: "#fbbf24",
+              },
+              {
+                num: "04",
+                title: "Vertrauen entsteht woanders",
+                desc: "Ein aktives, professionelles Profil signalisiert: Wir sind modern, wir sind da, wir können etwas. Ohne das übernehmen Mitbewerber dieses Vertrauen — still und leise.",
+                accent: "#a78bfa",
+              },
+            ].map((item, i) => (
+              <div key={i} className="reveal flex gap-5 p-6 rounded-2xl transition-all duration-300 hover:bg-white/[0.025]"
+                style={{ border: "1px solid rgba(255,255,255,0.06)", transitionDelay: `${i * 0.1}s` }}>
+                <div className="flex-shrink-0 text-4xl font-black leading-none mt-0.5" style={{ color: `${item.accent}20` }}>{item.num}</div>
+                <div>
+                  <h3 className="text-white font-bold text-base mb-2">{item.title}</h3>
+                  <p className="text-[#a0a0b8] text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="reveal text-center mt-10">
+            <a href="#kontakt" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm text-white transition-all duration-300 hover:scale-105"
+              style={{ background: "linear-gradient(135deg, #3b5bdb, #6366f1)", boxShadow: "0 4px 24px rgba(59,91,219,0.4)" }}>
+              Jetzt Gespräch buchen →
+            </a>
           </div>
         </div>
       </section>
@@ -1576,6 +1828,88 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
                 </p>
               </div>
 
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────────── REGION KARTE ─────────────────── */}
+      <div className="section-divider" />
+      <section className="py-14 md:py-20 relative overflow-hidden" style={{ background: "#181820" }}>
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            {/* Text */}
+            <div className="flex-1">
+              <p className="reveal text-[#4c6ef5] text-xs font-bold uppercase tracking-[0.2em] mb-4">Unser Revier</p>
+              <h2 className="reveal delay-100 text-3xl md:text-5xl font-black text-white leading-tight mb-5">
+                Von Freiburg<br />
+                <span className="gradient-text">bis in die Region.</span>
+              </h2>
+              <p className="reveal delay-200 text-[#a0a0b8] text-base leading-relaxed mb-6">
+                Wir kommen zu euch — egal ob Kaiserstuhl, Dreisamtal, Markgräflerland oder Offenburg.
+                Keine Anfahrtspauschalen, kein Aufwand für euch.
+              </p>
+              <div className="reveal delay-300 flex flex-wrap gap-2">
+                {["Freiburg i.Br.", "Emmendingen", "Breisach", "Kirchzarten", "Titisee", "Staufen", "Müllheim", "Lahr", "Offenburg"].map((town) => (
+                  <span key={town} className="text-xs px-3 py-1.5 rounded-full font-medium"
+                    style={{ background: "rgba(59,91,219,0.1)", border: "1px solid rgba(59,91,219,0.2)", color: "#a5b4fc" }}>
+                    {town}
+                  </span>
+                ))}
+              </div>
+            </div>
+            {/* SVG Map */}
+            <div className="reveal-right flex-shrink-0 w-full md:w-[300px]">
+              <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" className="w-full max-w-[300px] mx-auto">
+                <defs>
+                  <radialGradient id="mapGlow" cx="50%" cy="55%" r="50%">
+                    <stop offset="0%" stopColor="rgba(59,91,219,0.12)" />
+                    <stop offset="100%" stopColor="rgba(0,0,0,0)" />
+                  </radialGradient>
+                  <filter id="glow">
+                    <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                    <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                </defs>
+                <rect width="300" height="400" fill="url(#mapGlow)" rx="16"/>
+                {/* Connection lines from Freiburg */}
+                {[
+                  [185,220, 195,160],[185,220, 90,210],[185,220, 265,255],
+                  [185,220, 150,310],[185,220, 195,100],[185,220, 225,55],
+                  [185,220, 280,310],[185,220, 130,370],
+                ].map(([x1,y1,x2,y2],i) => (
+                  <line key={i} x1={x1} y1={y1} x2={x2} y2={y2}
+                    stroke="rgba(99,102,241,0.18)" strokeWidth="1" strokeDasharray="3,4"/>
+                ))}
+                {/* Towns */}
+                {[
+                  { x: 185, y: 220, name: "Freiburg", main: true },
+                  { x: 195, y: 160, name: "Emmendingen", main: false },
+                  { x: 90,  y: 210, name: "Breisach", main: false },
+                  { x: 265, y: 255, name: "Kirchzarten", main: false },
+                  { x: 150, y: 310, name: "Staufen", main: false },
+                  { x: 195, y: 100, name: "Lahr", main: false },
+                  { x: 225, y: 55,  name: "Offenburg", main: false },
+                  { x: 280, y: 310, name: "Titisee", main: false },
+                  { x: 130, y: 370, name: "Müllheim", main: false },
+                ].map((t) => (
+                  <g key={t.name} filter={t.main ? "url(#glow)" : undefined}>
+                    {t.main && <circle cx={t.x} cy={t.y} r="18" fill="rgba(59,91,219,0.12)" stroke="rgba(99,102,241,0.3)" strokeWidth="1"/>}
+                    <circle cx={t.x} cy={t.y} r={t.main ? 6 : 4}
+                      fill={t.main ? "#6366f1" : "rgba(99,102,241,0.7)"}
+                      stroke={t.main ? "rgba(165,180,252,0.5)" : "rgba(99,102,241,0.3)"}
+                      strokeWidth={t.main ? 2 : 1}/>
+                    <text x={t.x + (t.x > 185 ? 10 : -10)} y={t.y + 4}
+                      textAnchor={t.x > 185 ? "start" : "end"}
+                      fill={t.main ? "#e0e0f0" : "#8888a8"}
+                      fontSize={t.main ? "10" : "8.5"}
+                      fontWeight={t.main ? "700" : "400"}
+                      fontFamily="Inter, sans-serif">
+                      {t.name}
+                    </text>
+                  </g>
+                ))}
+              </svg>
             </div>
           </div>
         </div>
@@ -1739,6 +2073,27 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
       )}
 
       {reportOpen && <MonthlyReportModal onClose={() => setReportOpen(false)} />}
+
+      {/* ── Sticky pricing badge ── */}
+      <div style={{
+        position: "fixed", bottom: "6.5rem", left: "1.75rem", zIndex: 998,
+        transition: "opacity 0.3s ease, transform 0.3s ease",
+        opacity: pricingVisible ? 1 : 0,
+        transform: pricingVisible ? "translateY(0)" : "translateY(8px)",
+        pointerEvents: pricingVisible ? "auto" : "none",
+      }}>
+        <a href="#preise" style={{
+          display: "flex", flexDirection: "column", gap: 2,
+          padding: "0.6rem 1rem", borderRadius: "12px",
+          background: "rgba(17,17,24,0.92)", backdropFilter: "blur(12px)",
+          border: "1px solid rgba(99,102,241,0.3)",
+          boxShadow: "0 4px 20px rgba(0,0,0,0.4)",
+          textDecoration: "none",
+        }}>
+          <span style={{ color: "#a5b4fc", fontSize: 11, fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase" }}>Ab 890 € / Monat</span>
+          <span style={{ color: "#6b6b8a", fontSize: 10 }}>Monatlich kündbar · Kein Vertrag</span>
+        </a>
+      </div>
 
       {/* ── WhatsApp floating button ── */}
       <a
