@@ -15,6 +15,12 @@
 
 html { scroll-behavior: smooth; }
 
+@keyframes wa-pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  70% { transform: scale(1.65); opacity: 0; }
+  100% { transform: scale(1.65); opacity: 0; }
+}
+
 /* ── Editor mode: visual state via CSS class on body ── */
 body.cs-editor [data-eid],
 body.cs-editor [data-auto-eid] {

@@ -140,24 +140,27 @@ function useTilt(ref: React.RefObject<HTMLElement | null>) {
 }
 
 /* ── Animated counter ── */
-function Counter({ target, suffix = "" }: { target: number; suffix?: string }) {
+function Counter({ target, suffix = "", duration = 1800 }: { target: number; suffix?: string; duration?: number }) {
   const [val, setVal] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
+  const fired = useRef(false);
   useEffect(() => {
     const io = new IntersectionObserver(([e]) => {
-      if (!e.isIntersecting) return;
+      if (!e.isIntersecting || fired.current) return;
+      fired.current = true;
       io.disconnect();
-      let start = 0;
-      const step = Math.ceil(target / 60);
-      const t = setInterval(() => {
-        start += step;
-        if (start >= target) { setVal(target); clearInterval(t); }
-        else setVal(start);
-      }, 20);
-    }, { threshold: 0.5 });
+      const startTime = performance.now();
+      const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
+      const tick = (now: number) => {
+        const elapsed = Math.min((now - startTime) / duration, 1);
+        setVal(Math.round(easeOut(elapsed) * target));
+        if (elapsed < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }, { threshold: 0.4 });
     if (ref.current) io.observe(ref.current);
     return () => io.disconnect();
-  }, [target]);
+  }, [target, duration]);
   return <span ref={ref}>{val}{suffix}</span>;
 }
 
@@ -169,10 +172,10 @@ const NAV_LINKS = [
 ];
 
 const STATS = [
-  { value: 3, suffix: "×", label: "mehr organische Reichweite nach 90 Tagen" },
-  { value: 48, suffix: "h", label: "maximale Reaktionszeit auf aktuelle Trends" },
-  { value: 100, suffix: "%", label: "Inhouse produziert – kein Outsourcing" },
-  { value: 0, suffix: "", label: "generische Templates. Alles maßgeschneidert." },
+  { value: 300, suffix: "%", label: "mehr organische Reichweite nach 90 Tagen", duration: 2000 },
+  { value: 48, suffix: "h", label: "maximale Reaktionszeit auf aktuelle Trends", duration: 1600 },
+  { value: 100, suffix: "%", label: "Inhouse produziert – kein Outsourcing", duration: 1800 },
+  { value: 12, suffix: "+", label: "Posts & Reels pro Monat, maßgeschneidert", duration: 1400 },
 ];
 
 const SERVICES = [
@@ -610,7 +613,7 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
                 <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 pointer-events-none"
                   style={{ background: "radial-gradient(circle at 50% 50%, rgba(59,91,219,0.08) 0%, transparent 70%)" }} />
                 <div className="text-4xl md:text-6xl font-black mb-2 gradient-text-blue group-hover:scale-110 transition-transform duration-500 inline-block">
-                  <Counter target={s.value} suffix={s.suffix} />
+                  <Counter target={s.value} suffix={s.suffix} duration={s.duration} />
                 </div>
                 <div className="text-[#a0a0b8] text-sm leading-relaxed max-w-[160px] mx-auto">{s.label}</div>
               </div>
@@ -1751,6 +1754,49 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
       )}
 
       {reportOpen && <MonthlyReportModal onClose={() => setReportOpen(false)} />}
+
+      {/* ── WhatsApp floating button ── */}
+      <a
+        href="https://wa.me/4917662612328"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="WhatsApp"
+        className="group"
+        style={{
+          position: "fixed",
+          bottom: "1.75rem",
+          right: "1.75rem",
+          zIndex: 999,
+          width: 56,
+          height: 56,
+          borderRadius: "50%",
+          background: "linear-gradient(135deg, #25d366, #128c4e)",
+          boxShadow: "0 4px 24px rgba(37,211,102,0.45)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          transition: "transform 0.2s ease, box-shadow 0.2s ease",
+        }}
+        onMouseEnter={e => {
+          (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1.12)";
+          (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 6px 32px rgba(37,211,102,0.6)";
+        }}
+        onMouseLeave={e => {
+          (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1)";
+          (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 24px rgba(37,211,102,0.45)";
+        }}
+      >
+        {/* Pulse ring */}
+        <span style={{
+          position: "absolute", inset: 0, borderRadius: "50%",
+          background: "rgba(37,211,102,0.35)",
+          animation: "wa-pulse 2.2s ease-out infinite",
+        }} />
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style={{ position: "relative" }}>
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.533 5.845L.057 23.571a.5.5 0 0 0 .612.612l5.726-1.476A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.015-1.374l-.36-.214-3.733.962.991-3.625-.235-.372A9.818 9.818 0 1 1 12 21.818z"/>
+        </svg>
+      </a>
 
     </main>
   );
