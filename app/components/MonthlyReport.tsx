@@ -189,7 +189,7 @@ export function MonthlyReportModal({ onClose }: { onClose: () => void }) {
 </head><body>
 <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px;">
   <div>
-    <div style="color:#3b5bdb;font-size:11px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">contentstudio · Freiburg im Breisgau</div>
+    <div style="color:#3b5bdb;font-size:11px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Funkenflug · Freiburg im Breisgau</div>
     <h1>Monatsbericht April 2026</h1>
     <div style="color:#555;font-size:13px;margin-top:4px;">Metallbau Regional · Freiburg im Breisgau · Zeitraum: 01.04. – 30.04.2026</div>
   </div>
@@ -251,7 +251,7 @@ ${COMMENTS_HIGHLIGHTS.map(ch => `<h3>„${ch.post}"</h3>${ch.items.slice(0,5).ma
 ${NEXT_STEPS.map(n => `<div class="next-item"><span class="${n.prio === "Hoch" ? "prio-high" : n.prio === "Mittel" ? "prio-mid" : "prio-low"}">${n.prio}</span><span style="font-size:12px;">${n.text}</span></div>`).join("")}
 
 <div class="footer">
-  <span>contentstudio · Robin Obrechtle · robin@obrechtle.de · Freiburg im Breisgau</span>
+  <span>Funkenflug · Robin Obrechtle · robin@obrechtle.de · Freiburg im Breisgau</span>
   <span>Monatsbericht April 2026 · Metallbau Regional</span>
 </div>
 </body></html>`);
@@ -288,7 +288,7 @@ ${NEXT_STEPS.map(n => `<div class="next-item"><span class="${n.prio === "Hoch" ?
         }}>
           <div>
             <div style={{ color: "#4c6ef5", fontSize: 10, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: 4 }}>
-              contentstudio · Monatsbericht
+              Funkenflug · Monatsbericht
             </div>
             <h2 style={{ color: "#fff", fontSize: 22, fontWeight: 900, lineHeight: 1.1 }}>April 2026</h2>
             <p style={{ color: "#8888a8", fontSize: 12, marginTop: 4 }}>
@@ -562,7 +562,7 @@ ${NEXT_STEPS.map(n => `<div class="next-item"><span class="${n.prio === "Hoch" ?
             display: "flex", justifyContent: "space-between", alignItems: "center",
             marginTop: 4,
           }}>
-            <span style={{ color: "#555568", fontSize: 11 }}>contentstudio · Robin Obrechtle · robin@obrechtle.de</span>
+            <span style={{ color: "#555568", fontSize: 11 }}>Funkenflug · Robin Obrechtle · robin@obrechtle.de</span>
             <span style={{ color: "#555568", fontSize: 11 }}>Monatsbericht April 2026 · Vertraulich</span>
           </div>
         </div>

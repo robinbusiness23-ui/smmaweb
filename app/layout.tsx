@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Content Studio – Social Media für Handwerksbetriebe",
+  title: "Funkenflug – Social Media für Handwerksbetriebe",
   description:
     "Wir zeigen, wer ihr wirklich seid – nicht wer ihr sein könntet. Authentischer Social-Media-Content für Handwerksbetriebe im Mittelstand.",
 };

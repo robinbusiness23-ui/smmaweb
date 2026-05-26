@@ -17,7 +17,7 @@ export default function Datenschutz() {
           <Section title="1. Verantwortliche Stelle">
             <p>Verantwortlich für die Datenverarbeitung auf dieser Website ist:</p>
             <p className="mt-2">
-              <strong>contentstudio · Robin Obrechtle</strong><br />
+              <strong>Funkenflug · Robin Obrechtle</strong><br />
               [Straße und Hausnummer]<br />
               79[XXX] Freiburg im Breisgau<br />
               E-Mail: <a href="mailto:robin@obrechtle.de" style={{ color: "#4c6ef5" }}>robin@obrechtle.de</a><br />

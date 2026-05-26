@@ -340,7 +340,7 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
       >
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <a href="#" className="text-white font-black text-xl tracking-tight group">
-            content<span className="text-[#4c6ef5] group-hover:text-[#74c0fc] transition-colors">studio</span>
+            Funken<span className="text-[#4c6ef5] group-hover:text-[#74c0fc] transition-colors">flug</span>
           </a>
           <div className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map((l) => (
@@ -1263,7 +1263,7 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
               </div>
               <div className="text-center">
                 <div className="text-white font-bold text-lg leading-tight">Robin Obrechtle</div>
-                <div className="text-[#4c6ef5] text-[11px] font-bold uppercase tracking-[0.18em] mt-1">Gründer · contentstudio</div>
+                <div className="text-[#4c6ef5] text-[11px] font-bold uppercase tracking-[0.18em] mt-1">Gründer · Funkenflug</div>
                 <div className="text-[#8888a8] text-xs mt-1.5">Freiburg im Breisgau</div>
               </div>
             </div>
@@ -1272,17 +1272,17 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
             <div className="reveal-right flex-1 max-w-2xl">
               <blockquote className="text-[#e0e0f0] text-xl md:text-2xl font-bold leading-snug mb-8"
                 style={{ borderLeft: "3px solid rgba(59,91,219,0.55)", paddingLeft: "1.5rem" }}>
-                „Ich habe gesehen, wie Bundesliga-Vereine mit echtem Content Emotionen wecken und Menschen binden. Dieses Prinzip funktioniert genauso für jeden guten Handwerksbetrieb in der Region – man braucht kein 6-stelliges Budget, man braucht den richtigen Partner."
+                „Jahre in der Branche, mehrere Agenturen, unzählige Budgetgespräche — und immer dieselbe Lücke: Wer macht das eigentlich für den Mittelstand?"
               </blockquote>
               <div className="space-y-4 text-[#a0a0b8] text-base leading-relaxed mb-10">
                 <p>
-                  contentstudio entstand aus einer einfachen Beobachtung: Die meisten Handwerksbetriebe in der Region
-                  machen exzellente Arbeit – sehen online aber aus wie jeder andere. Das liegt nicht an ihnen.
-                  Es liegt daran, dass Agenturen generischen Content produzieren, ohne je in einem Betrieb gewesen zu sein.
+                  Ich bin seit Jahren im Marketing tätig, habe in verschiedenen Agenturen gearbeitet und dabei vieles gesehen —
+                  gute Kampagnen, schlechte Kampagnen, und vor allem eines: Preise, die kein mittelständischer Betrieb realistisch stemmen kann.
+                  Dabei sind es genau diese Betriebe, die unser Land am Laufen halten.
                 </p>
                 <p>
-                  Mit unserem Inhouse-Fotografen, der seit Jahren für den SC Freiburg arbeitet, und mit dem Anspruch,
-                  jedes Unternehmen so zu zeigen, wie es wirklich ist – nicht wie eine Schablone es vorschreibt.
+                  Funkenflug ist meine Antwort darauf. Eine Agentur, die den Mittelstand wirklich ernst nimmt — vom Konzept bis zum Preis.
+                  Kein Outsourcing, kein Bullshit, kein Vertrag im Kleingedruckten. Nur echte Arbeit für echte Betriebe.
                 </p>
               </div>
 
@@ -1515,7 +1515,7 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
                   <br />Das könntet ihr sein.
                 </h2>
                 <p className="text-[#b0b0c8] text-base leading-relaxed mb-8 max-w-lg">
-                  contentstudio startet jetzt in der Region. Wir suchen die ersten Betriebe, die Teil
+                  Funkenflug startet jetzt in der Region. Wir suchen die ersten Betriebe, die Teil
                   unserer Erfolgsgeschichten werden — und die dafür die besten Konditionen bekommen.
                   Keine Hochglanz-Versprechen, nur echte Arbeit und echte Ergebnisse.
                 </p>
@@ -1668,7 +1668,7 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
           <div className="text-center md:text-left">
             <div className="text-white font-black text-xl tracking-tight mb-1">
-              content<span className="text-[#4c6ef5]">studio</span>
+              Funken<span className="text-[#4c6ef5]">flug</span>
             </div>
             <div className="text-[#8888a8] text-xs">Social Media für Handwerksbetriebe im Mittelstand</div>
           </div>

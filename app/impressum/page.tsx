@@ -15,7 +15,7 @@ export default function Impressum() {
 
         <div className="space-y-10" style={{ lineHeight: "1.8" }}>
           <Section title="Anbieter">
-            <p><strong>contentstudio</strong></p>
+            <p><strong>Funkenflug</strong></p>
             <p>Robin Obrechtle</p>
             <p>[Straße und Hausnummer]</p>
             <p>79[XXX] Freiburg im Breisgau</p>
