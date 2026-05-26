@@ -234,12 +234,14 @@ const REASONS = [
 const PRICING = [
   {
     name: "Start",
-    price: "690",
+    price: "890",
     tag: "Einstieg",
     features: [
-      "1× Foto-/Video-Produktion pro Monat",
-      "8 Posts pro Monat",
+      "8 Posts pro Monat (Feed + Stories)",
       "Instagram & Facebook",
+      "Content-Strategie & Planung",
+      "Professionelle Bildbearbeitung",
+      "Community Management (Kommentare & DMs)",
       "Monatliches Reporting",
       "WhatsApp-Support",
     ],
@@ -248,15 +250,16 @@ const PRICING = [
   },
   {
     name: "Wachstum",
-    price: "1.290",
+    price: "1.490",
     tag: "Beliebteste Wahl",
     features: [
-      "2× Foto-/Video-Produktion pro Monat",
       "16 Posts + Reels pro Monat",
       "Instagram, Facebook & LinkedIn",
-      "Community Management",
-      "Monatliches Strategie-Call",
-      "Detailliertes Reporting",
+      "Vollständiges Community Management",
+      "Aktives Engagement & Follower-Aufbau",
+      "Monatlicher Strategie-Call mit Robin",
+      "Hashtag- & Zielgruppen-Optimierung",
+      "Detailliertes Reporting & Analyse",
       "Prioritäts-Support",
     ],
     cta: "Jetzt wachsen",
@@ -264,16 +267,17 @@ const PRICING = [
   },
   {
     name: "Vollgas",
-    price: "1.990",
+    price: "2.390",
     tag: "Maximale Präsenz",
     features: [
-      "4× Produktions-Tage pro Monat",
-      "30+ Posts, Reels & Stories",
+      "30+ Posts, Reels & Stories pro Monat",
       "Alle relevanten Plattformen",
       "Vollständiges Community Management",
+      "Paid Social Ads Management (Budget separat)",
       "Employer Branding Content",
-      "Wöchentliche Calls",
+      "Wöchentliche Strategie-Calls",
       "Direktzugang zum Team",
+      "Bewerbermanagement via Social Media",
     ],
     cta: "Maximale Präsenz",
     highlight: false,
@@ -1324,8 +1328,8 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
             </h2>
           </div>
           <p data-eid="pricing-p" className="reveal delay-200 text-[#b0b0c8] mb-16 max-w-xl text-base leading-relaxed">
-            Keine Pakete im Wert von 10.000 €, die ihr nie wirklich braucht.
-            Monatlich kündbar. Was ihr seht, ist was ihr zahlt.
+            Content, Strategie, Community Management und Reporting — alles inklusive, aus einer Hand.
+            Monatlich kündbar. Kein Mindestvertrag. Und Media Days auf Anfrage separat buchbar.
           </p>
 
           <div className="grid md:grid-cols-3 gap-5 md:gap-8">
@@ -1435,8 +1439,8 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
                 a: "Können Sie. Die Frage ist: wann – und auf welchem Niveau? Unser Fotograf dreht für den SC Freiburg. Was in der Mittagspause mit dem Handy entsteht, sieht anders aus. Und Zeit ist auch Geld.",
               },
               {
-                q: "690 € im Monat ist uns zu teuer.",
-                a: "Eine Stellenanzeige auf StepStone kostet ~1.200 € – einmal, ohne Garantie. Ein einziger Neukunde durch Social Media bedeutet in vielen Handwerksbranchen 5.000–50.000 € Auftragsvolumen. Das rechnet sich nach einem Monat.",
+                q: "Das ist uns zu teuer.",
+                a: "Eine Stellenanzeige auf StepStone kostet ~1.200 € – einmal, ohne Garantie. Ein einziger Neukunde durch Social Media bedeutet in vielen Handwerksbranchen 5.000–50.000 € Auftragsvolumen. Dazu: ihr zahlt nicht nur für Posts, sondern für Community Management, Strategie und laufende Optimierung – alles aus einer Hand.",
               },
               {
                 q: "Wir haben keine Zeit, uns darum zu kümmern.",
