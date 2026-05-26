@@ -1474,6 +1474,7 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
           style={{ background: "radial-gradient(ellipse at 50% 100%, rgba(59,91,219,0.12) 0%, transparent 70%)" }} />
 
         <div className="max-w-6xl mx-auto px-6 relative">
+          <div id="pricing-view" style={{ scrollMarginTop: "1.5rem" }} />
           <div className="mb-6">
             <p data-eid="pricing-label" className="reveal text-[#4c6ef5] text-xs font-bold uppercase tracking-[0.2em] mb-4">Preise</p>
             <h2 data-eid="pricing-h2" className="reveal delay-100 text-4xl md:text-6xl font-black text-white max-w-xl leading-[1.05]">
@@ -2077,25 +2078,27 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
       {reportOpen && <MonthlyReportModal onClose={() => setReportOpen(false)} />}
 
       {/* ── Sticky pricing badge ── */}
-      <div style={{
+      <a href="#pricing-view" style={{
         position: "fixed", bottom: "6.5rem", left: "1.75rem", zIndex: 998,
-        transition: "opacity 0.3s ease, transform 0.3s ease",
-        opacity: pricingVisible ? 1 : 0,
-        transform: pricingVisible ? "translateY(0)" : "translateY(8px)",
-        pointerEvents: pricingVisible ? "auto" : "none",
+        display: "flex", flexDirection: "column", gap: 2,
+        padding: "0.65rem 1.1rem", borderRadius: "14px",
+        background: "rgba(17,17,24,0.94)", backdropFilter: "blur(14px)",
+        border: "1px solid rgba(99,102,241,0.35)",
+        boxShadow: "0 4px 24px rgba(0,0,0,0.5)",
+        textDecoration: "none",
+        transition: "transform 0.2s ease, box-shadow 0.2s ease",
+      }}
+      onMouseEnter={e => {
+        (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1.04)";
+        (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 6px 28px rgba(99,102,241,0.3)";
+      }}
+      onMouseLeave={e => {
+        (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1)";
+        (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.5)";
       }}>
-        <a href="#preise" style={{
-          display: "flex", flexDirection: "column", gap: 2,
-          padding: "0.6rem 1rem", borderRadius: "12px",
-          background: "rgba(17,17,24,0.92)", backdropFilter: "blur(12px)",
-          border: "1px solid rgba(99,102,241,0.3)",
-          boxShadow: "0 4px 20px rgba(0,0,0,0.4)",
-          textDecoration: "none",
-        }}>
-          <span style={{ color: "#a5b4fc", fontSize: 11, fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase" }}>Ab 890 € / Monat</span>
-          <span style={{ color: "#6b6b8a", fontSize: 10 }}>Monatlich kündbar · Kein Vertrag</span>
-        </a>
-      </div>
+        <span style={{ color: "#a5b4fc", fontSize: 11, fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase" }}>Ab 890 € / Monat</span>
+        <span style={{ color: "#6b6b8a", fontSize: 10 }}>Monatlich kündbar · Kein Vertrag</span>
+      </a>
 
       {/* ── WhatsApp floating button ── */}
       <a
