@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "smmaweb",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd /Users/robin/Documents/SMMAWeb && npm run dev"],
+      "port": 3001
+    }
+  ]
+}
