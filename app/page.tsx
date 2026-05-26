@@ -1474,7 +1474,6 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
           style={{ background: "radial-gradient(ellipse at 50% 100%, rgba(59,91,219,0.12) 0%, transparent 70%)" }} />
 
         <div className="max-w-6xl mx-auto px-6 relative">
-          <div id="pricing-view" style={{ scrollMarginTop: "1.5rem" }} />
           <div className="mb-6">
             <p data-eid="pricing-label" className="reveal text-[#4c6ef5] text-xs font-bold uppercase tracking-[0.2em] mb-4">Preise</p>
             <h2 data-eid="pricing-h2" className="reveal delay-100 text-4xl md:text-6xl font-black text-white max-w-xl leading-[1.05]">
@@ -1487,6 +1486,7 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
             Monatlich kündbar. Kein Mindestvertrag. Und Media Days auf Anfrage separat buchbar.
           </p>
 
+          <div id="pricing-view" style={{ scrollMarginTop: "5rem" }} />
           <div className="grid md:grid-cols-3 gap-5 md:gap-8">
             {PRICING.map((p, i) => (
               <TiltCard key={i}
