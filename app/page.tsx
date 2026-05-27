@@ -341,7 +341,7 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
   }, []);
 
   return (
-    <main className="min-h-screen overflow-x-hidden">
+    <main className="min-h-screen overflow-x-hidden pb-[72px] md:pb-0">
       <ScrollProgress />
 
       {/* ─────────────────── NAV ─────────────────── */}
@@ -427,20 +427,20 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
 
             <h1
               data-eid="hero-h1"
-              className="text-[clamp(2.8rem,8vw,5.5rem)] font-black leading-[1.03] mb-8 tracking-tight">
-              <span className="animate-fade-up block text-white delay-100" style={{ opacity: 0 }}>Euer Betrieb.</span>
+              className="text-[clamp(2.8rem,8vw,5.5rem)] font-black leading-[1.03] mb-6 tracking-tight">
+              <span className="animate-fade-up block text-white delay-100" style={{ opacity: 0 }}>Mehr Aufträge.</span>
+              <span className="animate-fade-up block text-white delay-150" style={{ opacity: 0 }}>Mehr Bewerbungen.</span>
               <span className="animate-fade-up block delay-200 shimmer-text" style={{ opacity: 0 }}>
-                Sichtbar gemacht.
+                Durch echten Content.
               </span>
             </h1>
 
             <p
               data-eid="hero-p"
-              className="animate-fade-up delay-300 text-lg md:text-xl text-[#a0a0b8] leading-relaxed mb-10 max-w-2xl"
+              className="animate-fade-up delay-300 text-lg md:text-xl text-[#a0a0b8] leading-relaxed mb-10 max-w-xl"
               style={{ opacity: 0 }}>
-              Wir produzieren keinen Content, der wie alle anderen aussieht.
-              Wir zeigen, wer ihr wirklich seid – mit professioneller Foto- und
-              Videoproduktion, die sonst für Bundesliga-Vereine gemacht wird.
+              Social Media für Handwerksbetriebe in der Region Freiburg —
+              wir übernehmen alles. Ihr macht euren Job.
             </p>
 
             <div className="animate-fade-up delay-400 flex flex-wrap gap-4" style={{ opacity: 0 }}>
@@ -465,8 +465,8 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
             <div className="animate-fade-up delay-500 mt-14 flex flex-wrap gap-6" style={{ opacity: 0 }}>
               {[
                 "Keine Knebelverträge",
-                "100% Inhouse-Produktion",
-                "Ab 690 €/Monat",
+                "300% mehr Reichweite nach 90 Tagen",
+                "Ab 890 €/Monat",
               ].map((label, i) => (
                 <div key={i} className="flex items-center gap-2.5 group">
                   <div className="w-5 h-5 rounded-full bg-[#3b5bdb]/25 flex items-center justify-center flex-shrink-0 group-hover:bg-[#3b5bdb]/50 transition-colors">
@@ -1408,6 +1408,17 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
 
       {/* ─────────────────── FOUNDER / ABOUT ─────────────────── */}
       <div className="section-divider" />
+      <section className="py-10 relative" style={{ background: "#0f0f18" }}>
+        <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-[#a0a0b8] text-sm">Bereit loszulegen? Das erste Gespräch ist kostenlos.</p>
+          <a href="#kontakt"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-white text-sm transition-all duration-300 hover:scale-105 flex-shrink-0"
+            style={{ background: "linear-gradient(135deg,#3b5bdb,#6366f1)", boxShadow: "0 4px 20px rgba(59,91,219,0.4)" }}>
+            Kostenloses Erstgespräch →
+          </a>
+        </div>
+      </section>
+      <div className="section-divider" />
       <section className="py-14 md:py-24 relative overflow-hidden" style={{ background: "#13131a" }}>
         <div className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
           style={{ background: "radial-gradient(circle at 85% 10%, rgba(59,91,219,0.07) 0%, transparent 60%)" }} />
@@ -1601,6 +1612,17 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
       </section>
 
       {/* ─────────────────── VERGLEICH ─────────────────── */}
+      <div className="section-divider" />
+      <section className="py-10 relative" style={{ background: "#16161f" }}>
+        <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-[#a0a0b8] text-sm">Überzeugt? Wir machen das erste Gespräch kostenlos.</p>
+          <a href="#kontakt"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-white text-sm transition-all duration-300 hover:scale-105 flex-shrink-0"
+            style={{ background: "linear-gradient(135deg,#3b5bdb,#6366f1)", boxShadow: "0 4px 20px rgba(59,91,219,0.4)" }}>
+            Kostenloses Erstgespräch →
+          </a>
+        </div>
+      </section>
       <div className="section-divider" />
       <section className="py-14 md:py-20 relative overflow-hidden" style={{ background: "#1e1e28" }}>
         <div className="max-w-5xl mx-auto px-6">
@@ -2106,6 +2128,19 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
       )}
 
       {reportOpen && <MonthlyReportModal onClose={() => setReportOpen(false)} />}
+
+      {/* ── Mobile sticky CTA bar ── */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-[996] px-4 pb-4 pt-3"
+        style={{ background: "linear-gradient(to top, rgba(10,10,18,0.98) 70%, transparent)", backdropFilter: "blur(12px)" }}>
+        <a href="#kontakt"
+          className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl font-bold text-white text-base"
+          style={{ background: "linear-gradient(135deg,#3b5bdb,#6366f1)", boxShadow: "0 4px 24px rgba(59,91,219,0.5)" }}>
+          Kostenloses Erstgespräch buchen
+          <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+            <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
 
       {/* ── Sticky pricing badge ── */}
       <a href="#pricing-view" style={{
