@@ -779,7 +779,7 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
               über euren Betrieb spüren sollen. Wir fangen das ein.
               Nicht gestellt. Nicht generisch. Echt.
             </p>
-            <div className="reveal delay-300 flex flex-col gap-3">
+            <div className="reveal delay-300 flex flex-col gap-3 mb-8">
               {[
                 { icon: "◈", text: "Dieselbe Kamera. Dieselbe Bildsprache. Jetzt für euch." },
                 { icon: "◈", text: "Professionelle Produktion – ohne Bundesliga-Budget." },
@@ -791,6 +791,36 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
                 </div>
               ))}
             </div>
+            <a
+              href="https://www.jgphotos.de/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="reveal delay-400 group inline-flex items-center gap-2.5 px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-300"
+              style={{
+                background: "rgba(226,0,26,0.08)",
+                border: "1px solid rgba(226,0,26,0.3)",
+                color: "#fca5a5",
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLAnchorElement).style.background = "rgba(226,0,26,0.15)";
+                (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(226,0,26,0.55)";
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLAnchorElement).style.background = "rgba(226,0,26,0.08)";
+                (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(226,0,26,0.3)";
+              }}
+            >
+              {/* Camera icon */}
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                <circle cx="12" cy="13" r="4"/>
+              </svg>
+              Portfolio unseres Fotografen ansehen
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                className="transition-transform duration-300 group-hover:translate-x-1">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </a>
           </div>
 
           {/* ── Player image with oval mask ── */}
