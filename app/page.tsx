@@ -187,7 +187,7 @@ const SERVICES = [
   {
     icon: "◉",
     title: "Foto & Video Produktion",
-    desc: "Unser Fotograf arbeitet u.a. für den SC Freiburg. Das gleiche professionelle Auge, das Bundesliga-Content produziert, dreht jetzt für euren Betrieb.",
+    desc: "Wir kommen zu euch — in die Werkstatt, auf die Baustelle, ins Büro. Echter Content entsteht dort wo ihr arbeitet, nicht im Studio vor weißem Hintergrund.",
   },
   {
     icon: "◈",
@@ -219,8 +219,8 @@ const REASONS = [
   },
   {
     num: "02",
-    title: "Bundesliga-Qualität. Mittelstands-Preis.",
-    desc: "Unser Inhouse-Fotograf dreht für den SC Freiburg. Ihr bekommt denselben Anspruch an visueller Qualität – ohne das Budget einer Profi-Sportorganisation.",
+    title: "Professionell produziert. Nicht selbst hingestellt.",
+    desc: "Profi-Equipment, geschultes Auge, durchdachte Bildsprache — ihr bekommt Qualität, die man sonst nur bei großen Marken sieht. Zum Preis, den ein Mittelstandsbetrieb stemmen kann.",
   },
   {
     num: "03",
@@ -288,14 +288,14 @@ const PRICING = [
 ];
 
 const MARQUEE_ITEMS = [
-  "SC Freiburg", "Metallbauer", "Schreiner", "Region Freiburg",
+  "Funkenflug", "Metallbauer", "Schreiner", "Region Freiburg",
   "Elektriker", "Dachdecker", "Authentischer Content", "Keine Templates",
-  "Sanitär & Heizung", "Bundesliga-Qualität", "Ehrliche Preise", "Maler & Lackierer",
-  "Social Media", "Employer Branding", "Kfz-Betriebe", "Inhouse Produktion",
-  "SC Freiburg", "Metallbauer", "Schreiner", "Region Freiburg",
+  "Sanitär & Heizung", "Vor-Ort-Produktion", "Ehrliche Preise", "Maler & Lackierer",
+  "Social Media", "Employer Branding", "Kfz-Betriebe", "Kein Outsourcing",
+  "Funkenflug", "Metallbauer", "Schreiner", "Region Freiburg",
   "Elektriker", "Dachdecker", "Authentischer Content", "Keine Templates",
-  "Sanitär & Heizung", "Bundesliga-Qualität", "Ehrliche Preise", "Maler & Lackierer",
-  "Social Media", "Employer Branding", "Kfz-Betriebe", "Inhouse Produktion",
+  "Sanitär & Heizung", "Vor-Ort-Produktion", "Ehrliche Preise", "Maler & Lackierer",
+  "Social Media", "Employer Branding", "Kfz-Betriebe", "Kein Outsourcing",
 ];
 
 function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMode: (v: boolean) => void }) {
@@ -715,20 +715,13 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
               <div className="relative flex-1">
                 <p data-eid="diff-label" className="text-xs text-[#4c6ef5] font-bold uppercase tracking-[0.2em] mb-4">Was uns wirklich unterscheidet</p>
                 <h2 data-eid="diff-h2" className="text-2xl md:text-4xl font-black text-white leading-tight">
-                  Unser Fotograf dreht für den{" "}
-                  <span style={{
-                    background: "linear-gradient(125deg, #ff7070 0%, #E2001A 45%, #aa0010 100%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                    filter: "drop-shadow(0 0 12px rgba(226,0,26,0.45))",
-                  }}>SC Freiburg</span>.
-                  <br className="hidden md:block" />
-                  Jetzt dreht er für euren Betrieb.
+                  Wir waren schon in der Werkstatt,<br className="hidden md:block" />
+                  bevor wir den ersten Post gemacht haben.
                 </h2>
                 <p data-eid="diff-p" className="mt-5 text-[#b0b0c8] text-base max-w-xl leading-relaxed">
-                  Dieselbe Professionalität, dieselbe Bildsprache – nur dass ihr nicht
-                  Bundesliga-Budget braucht. Visuell auf höchstem Niveau, weil ihr das verdient.
+                  Kein Stock-Content. Keine Schablonen. Wir kommen zu euch, verstehen euren Betrieb —
+                  und zeigen genau das nach außen. Unser Fotograf bringt dabei eine Bildsprache mit,
+                  die normalerweise größeren Marken vorbehalten ist.
                 </p>
               </div>
             </div>
@@ -781,8 +774,8 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
             </p>
             <div className="reveal delay-300 flex flex-col gap-3 mb-8">
               {[
-                { icon: "◈", text: "Dieselbe Kamera. Dieselbe Bildsprache. Jetzt für euch." },
-                { icon: "◈", text: "Professionelle Produktion – ohne Bundesliga-Budget." },
+                { icon: "◈", text: "Unsere Kamera war schon bei Bundesliga-Matches. Jetzt in eurer Werkstatt." },
+                { icon: "◈", text: "Professionelle Qualität — zum fairen Mittelstandspreis." },
                 { icon: "◈", text: "Content, den eure Kunden nicht vergessen." },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
@@ -1490,7 +1483,7 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
                 {[
                   { label: "Freiburg im Breisgau" },
                   { label: "Inhouse Produktion" },
-                  { label: "SC Freiburg Fotograf" },
+                  { label: "Vor-Ort bei euch" },
                   { label: "Kein Outsourcing" },
                 ].map((chip, i) => (
                   <span key={i} className="text-xs font-semibold px-3 py-1.5 rounded-full"
@@ -1688,7 +1681,7 @@ function Home({ editorMode, setEditorMode }: { editorMode: boolean; setEditorMod
               },
               {
                 q: "Das können wir selbst machen.",
-                a: "Können Sie. Die Frage ist: wann – und auf welchem Niveau? Unser Fotograf dreht für den SC Freiburg. Was in der Mittagspause mit dem Handy entsteht, sieht anders aus. Und Zeit ist auch Geld.",
+                a: "Können Sie. Die Frage ist: wann — und auf welchem Niveau? Was in der Mittagspause mit dem Handy entsteht, sieht anders aus als professionell produzierter Content. Und die Zeit, die ihr investiert, fehlt woanders. Das ist der echte Preis.",
               },
               {
                 q: "Das ist uns zu teuer.",
